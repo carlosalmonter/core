@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . "/site/helpers/string_helper.php");
+require_once(dirname(__FILE__) . "/site/libraries/helpers/string_helper.php");
 require_once(dirname(__FILE__) . "/site/loaders/js_loader.php");
 require_once(dirname(__FILE__) . "/site/loaders/page_loader.php");
 require_once(dirname(__FILE__) . "/site/loaders/module_loader.php");
