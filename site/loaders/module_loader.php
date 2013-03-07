@@ -4,7 +4,7 @@ class ModuleLoader extends Loader
 {
     private function __construct(){}
 
-    private function loadModule($type, $moduleData){
+    private static function loadModule($type, $moduleData){
         return parent::load($type , "module", $type."/",$moduleData);
     }
 
@@ -17,7 +17,7 @@ class ModuleLoader extends Loader
         return $modules;
     }
 
-    private function getModulesDataFor($page){
+    private static function getModulesDataFor($page){
         $header = new stdClass();
         $header->type = ModuleTypes::HEADER;
         $header->position = "header";

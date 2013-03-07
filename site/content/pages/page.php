@@ -31,5 +31,4 @@ abstract class Page implements IContent{
     }
 
     protected  abstract function buildPage($pageData);
-    public static abstract function getPageModuleContainersPositions();
 }
