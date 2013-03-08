@@ -2,14 +2,16 @@
 require_once(dirname(__FILE__) . "/page.php");
 class GenericPage extends Page
 {
-    public function __construct($pageData){
+    private $moduleLoader;
+    public function __construct(PageData $pageData, ModuleLoader $moduleLoader = null){
+        $this->moduleLoader = is_null($moduleLoader)? new ModuleLoader() : $moduleLoader;
         parent::__construct($pageData);
     }
 
-    protected function buildPage($pageData)
+    protected function buildPage(PageData $pageData)
     {
         $pageContent = array();
-        $modules = ModuleLoader::loadModulesFor($pageData->name);
+        $modules = $this->moduleLoader->loadModulesFor($pageData->getName());
         /**
          * @var $module Module
          */

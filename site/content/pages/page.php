@@ -30,5 +30,5 @@ abstract class Page implements IContent{
         $this->content = $content;
     }
 
-    protected  abstract function buildPage($pageData);
+    protected  abstract function buildPage(PageData $pageData);
 }

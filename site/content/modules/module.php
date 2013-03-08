@@ -7,11 +7,11 @@ abstract class Module implements IContent
     private $modulePosition;
     private $moduleData;
 
-    protected function __construct($moduleData){
+    protected function __construct(ModuleData $moduleData){
         $this->templateName = "generic";
-        $this->moduleType = $moduleData->type;
-        $this->modulePosition = $moduleData->position;
-        $this->moduleData = $moduleData->data;
+        $this->moduleType = $moduleData->getType();
+        $this->modulePosition = $moduleData->getPosition();
+        $this->moduleData = $moduleData->getData();
     }
     public function getHtml()
     {

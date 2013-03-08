@@ -1,31 +1,35 @@
 <?php
 require_once(dirname(__FILE__) . "/loader.php");
+require_once(dirname(__FILE__) . "/../content/modules/module_data.php");
 class ModuleLoader extends Loader
 {
-    private function __construct(){}
+    public function __construct(){}
 
-    private static function loadModule($type, $moduleData){
+    private function loadModule($type, ModuleData $moduleData){
         return parent::load($type , "module", $type."/",$moduleData);
     }
 
-    public static function loadModulesFor($page){
+    public function loadModulesFor($page){
         $modules = array();
-        $modulesData = self::getModulesDataFor($page);
+        $modulesData = $this->getModulesDataFor($page);
+        /**
+         * @var $moduleData ModuleData
+         */
         foreach($modulesData as $moduleData){
-            $modules []= self::loadModule($moduleData->type, $moduleData);
+            $modules []= $this->loadModule($moduleData->getType(), $moduleData);
         }
         return $modules;
     }
 
-    private static function getModulesDataFor($page){
-        $header = new stdClass();
-        $header->type = ModuleTypes::HEADER;
-        $header->position = "header";
-        $header->data = "header";
-        $footer = new stdClass();
-        $footer->type = ModuleTypes::FOOTER;
-        $footer->position = "footer";
-        $footer->data = "footer";
+    private function getModulesDataFor($page){
+        $header = new ModuleData();
+        $header->setType(ModuleTypes::HEADER);
+        $header->setPosition("header");
+        $header->setData("header");
+        $footer = new ModuleData();
+        $footer->setType(ModuleTypes::FOOTER);
+        $footer->setPosition("footer");
+        $footer->setData("footer");
         return array($header, $footer);
     }
 }
