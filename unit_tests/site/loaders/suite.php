@@ -1,19 +1,11 @@
 <?php
-//require_once 'PHPUnit/Framework.php';
- 
-require_once 'Framework/AssertTest.php';
-// ...
- 
-class Framework_AllTests
+require_once "test_specs.php";
+class Site_Loaders_Suite extends PHPUnit_Framework_TestSuite
 {
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('PHPUnit Framework');
- 
-        $suite->addTestSuite('Framework_AssertTest');
-        // ...
- 
+        $suite = new PHPUnit_Framework_TestSuite('Site_Loaders');
+        $suite->addTestSuite(Site_Loaders_TestSpecs::suite());
         return $suite;
     }
 }
-?>

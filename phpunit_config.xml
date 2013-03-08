@@ -1,0 +1,8 @@
+<phpunit>
+  <filter>
+    <blacklist>
+      <directory suffix=".php">./unit_tests</directory>
+      <!--<file>all_tests.php</file>-->
+    </blacklist>
+  </filter>
+</phpunit>
