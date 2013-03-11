@@ -13,10 +13,11 @@ if($requestPage == "admin"){
     $pageData = new PageData();
     $pageData->setName("admin");
     $pageData->setType(PageTypes::GENERIC);
+    $pageLoader = new PageLoader();
     /**
      * @var $page Page
      */
-    $page = PageLoader::loadPage($pageData);
+    $page = $pageLoader->loadPage($pageData);
     echo $page->getHtml();
 }else{
     echo "<h1>ERROR 404 PAGE NOT FOUND</h1>";

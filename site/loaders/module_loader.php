@@ -1,12 +1,16 @@
 <?php
 require_once(dirname(__FILE__) . "/loader.php");
 require_once(dirname(__FILE__) . "/../content/modules/module_data.php");
-class ModuleLoader extends Loader
+require_once(dirname(__FILE__) . "/../content/modules/module_types.php");
+class ModuleLoader
 {
-    public function __construct(){}
+    private $loader;
+    public function __construct(Loader $loader = null){
+        $this->loader = is_null($loader)? new Loader(): $loader;
+    }
 
     private function loadModule($type, ModuleData $moduleData){
-        return parent::load($type , "module", $type."/",$moduleData);
+        return $this->loader->load($type , "module", $type."/",$moduleData);
     }
 
     public function loadModulesFor($page){
@@ -34,9 +38,5 @@ class ModuleLoader extends Loader
     }
 }
 
-class ModuleTypes{
-    const HEADER = "header";
-    const FOOTER = "footer";
-    private function __construct(){}
-}
+
 

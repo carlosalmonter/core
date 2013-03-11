@@ -2,6 +2,7 @@
 require_once dirname(__FILE__) . "/footer/suite.php";
 require_once dirname(__FILE__) . "/header/suite.php";
 require_once dirname(__FILE__) . "/module_data_specs.php";
+require_once dirname(__FILE__) . "/module_types_specs.php";
 class Site_Content_Modules_Suite extends PHPUnit_Framework_TestSuite
 {
     public static function suite()
@@ -10,6 +11,7 @@ class Site_Content_Modules_Suite extends PHPUnit_Framework_TestSuite
         $suite->addTestSuite(Site_Content_Modules_Footer_Suite::suite());
         $suite->addTestSuite(Site_Content_Modules_Header_Suite::suite());
         $suite->addTestSuite(Site_Content_Modules_ModuleDataSpecs::suite());
+        $suite->addTestSuite(Site_Content_Modules_ModuleTypesSpecs::suite());
         return $suite;
     }
 }
