@@ -2,6 +2,7 @@
   <filter>
     <blacklist>
       <directory suffix=".php">./unit_tests</directory>
+      <directory suffix=".php">./vendor</directory>
       <!--<file>all_tests.php</file>-->
     </blacklist>
   </filter>

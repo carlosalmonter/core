@@ -36,10 +36,6 @@ abstract class Module implements IContent
     {
         return $this->moduleData;
     }
-
-    public function setTemplateName($templateName){
-
-    }
 }
 
 

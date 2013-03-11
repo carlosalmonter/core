@@ -5,7 +5,7 @@ class GenericPage extends Page
     private $moduleLoader;
     public function __construct(PageData $pageData, ModuleLoader $moduleLoader = null){
         $this->moduleLoader = is_null($moduleLoader)? new ModuleLoader() : $moduleLoader;
-        parent::__construct($pageData);
+        parent::__construct($pageData, "generic");
     }
 
     protected function buildPage(PageData $pageData)

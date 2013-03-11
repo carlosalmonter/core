@@ -5,8 +5,8 @@ abstract class Page implements IContent{
     private $templateName;
     private $content = array();
 
-    protected  function __construct($pageData){
-        $this->templateName = "generic";
+    protected  function __construct($pageData, $templateName){
+        $this->templateName = $templateName;
         $this->buildPage($pageData);
     }
 
@@ -19,11 +19,6 @@ abstract class Page implements IContent{
         $html = ob_get_contents();
         ob_clean();
         return $html;
-    }
-
-    public function setTemplateName($templateName)
-    {
-        $this->templateName = $templateName;
     }
 
     protected function setContent($content){
