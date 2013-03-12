@@ -1,6 +1,6 @@
 <?php
-require_once dirname(__FILE__) . "/../../../../site/libraries/helpers/array_helper.php";
-require_once dirname(__FILE__) . "/../../../../site/content/pages/generic_page.php";
+require_once dirname(__FILE__) . "/../../../../../site/libraries/helpers/array_helper.php";
+require_once dirname(__FILE__) . "/../../../../../site/content/pages/generic_page/generic_page.php";
 class Site_Content_Pages_GenericPageSpecs extends PHPUnit_Framework_TestSuite {
 
     public static function suite() {

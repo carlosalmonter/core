@@ -1,5 +1,5 @@
 <?php
-class Database{
+class DatabaseConfig{
     private $dbConfig = array();
     public function __construct(){
         $this->dbConfig['default'] = array(
