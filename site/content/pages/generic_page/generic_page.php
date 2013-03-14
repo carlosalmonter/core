@@ -11,7 +11,7 @@ class GenericPage extends Page
     protected function buildPage(PageData $pageData)
     {
         $pageContent = array();
-        $modules = $this->moduleLoader->loadModulesFor($pageData->getName());
+        $modules = $this->moduleLoader->loadModulesFor($pageData->getSection());
         /**
          * @var $module Module
          */

@@ -8,15 +8,25 @@ class PageDataMapper{
     }
 
     public function mapFor($section){
-        $pageDataArray = array();
-        $where = "section_id = 1";
-        $results = $this->database->selectAllFrom("pages", $where);
-        $this->map()
-        return null;
-
+        $results = $this->getPageDataFromDBFor($section);
+        return $this->map($results[0]);
     }
 
-    private function map(){
+    private function getPageDataFromDBFor($section){
+        $sql = "SELECT p.name, pt.type, st.type as section FROM core.pages_types pt
+                JOIN core.pages p ON p.page_type_id = pt.id
+                JOIN core.sections s ON s.id = p.section_id
+                JOIN core.sections_types st ON st.id = s.section_type_id
+                WHERE st.type = '{$section}'";
+        return $this->database->execute($sql);
+    }
 
+    private function map($result){
+
+        $pageData = new PageData();
+        $pageData->setName($result->name);
+        $pageData->setType($result->type);
+        $pageData->setSection($result->section);
+        return $pageData;
     }
 }

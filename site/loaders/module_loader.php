@@ -1,7 +1,8 @@
 <?php
-require_once(dirname(__FILE__) . "/loader.php");
-require_once(dirname(__FILE__) . "/../content/modules/module_data.php");
-require_once(dirname(__FILE__) . "/../content/modules/module_types.php");
+require_once dirname(__FILE__) . "/loader.php";
+require_once dirname(__FILE__) . "/../content/modules/module_data.php";
+require_once dirname(__FILE__) . "/../content/modules/module_types.php";
+require_once  dirname(__FILE__) . "/../libraries/mappers/module_data_mapper.php";
 class ModuleLoader
 {
     private $loader;
@@ -13,9 +14,9 @@ class ModuleLoader
         return $this->loader->load($type , "module", $type."/",$moduleData);
     }
 
-    public function loadModulesFor($page){
+    public function loadModulesFor($section){
         $modules = array();
-        $modulesData = $this->getModulesDataFor($page);
+        $modulesData = $this->getModulesDataFor($section);
         /**
          * @var $moduleData ModuleData
          */
@@ -25,7 +26,9 @@ class ModuleLoader
         return $modules;
     }
 
-    private function getModulesDataFor($page){
+    private function getModulesDataFor($section){
+        $moduleDataMapper = new ModuleDataMapper();
+        $moduleData = $moduleDataMapper->mapFor($section);
         $header = new ModuleData();
         $header->setType(ModuleTypes::HEADER);
         $header->setPosition("header");
@@ -34,7 +37,7 @@ class ModuleLoader
         $footer->setType(ModuleTypes::FOOTER);
         $footer->setPosition("footer");
         $footer->setData("footer");
-        return array($header, $footer);
+        return $moduleData;
     }
 }
 
