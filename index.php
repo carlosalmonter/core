@@ -7,7 +7,11 @@ require_once dirname(__FILE__) . "/site/loaders/section_loader.php";
 require_once dirname(__FILE__) . "/site/loaders/page_loader.php";
 require_once dirname(__FILE__) . "/site/loaders/module_loader.php";
 require_once dirname(__FILE__) . "/site/content/pages/page_data.php";
-
+?>
+<head>
+    <link rel="stylesheet" type="text/css" href="site/css/admin_page.css">
+</head>
+<?php
 $pageUrlParams = explode( "/", $_SERVER["REQUEST_URI"]);
 $requestPage = strtolower($pageUrlParams[2]);
 $sectionLoader = new SectionLoader();

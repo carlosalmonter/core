@@ -12,6 +12,7 @@ abstract class Module implements IContent
         $this->moduleType = $moduleData->getType();
         $this->modulePosition = $moduleData->getPosition();
         $this->moduleData = $moduleData->getData();
+
     }
     public function getHtml()
     {

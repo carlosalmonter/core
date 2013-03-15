@@ -30,6 +30,6 @@ class ModuleData{
 
     public function getData()
     {
-        return $this->data;
+        return json_decode($this->data);
     }
 }

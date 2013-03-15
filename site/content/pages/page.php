@@ -5,8 +5,10 @@ abstract class Page implements IContent{
     private $templateName;
     private $content = array();
     private $pageData;
+    private $moduleLoader;
 
-    protected  function __construct(PageData $pageData, $templateName){
+    protected  function __construct(PageData $pageData, $templateName, ModuleLoader $moduleLoader = null){
+        $this->moduleLoader = is_null($moduleLoader)? new ModuleLoader() : $moduleLoader;
         $this->templateName = $templateName;
         $this->buildPage($pageData);
         $this->pageData = $pageData;
@@ -16,6 +18,7 @@ abstract class Page implements IContent{
     {
         $html = "";
         $content = $this->content;
+        $section = $this->pageData->getSection();
         ob_start();
         include(dirname(__FILE__) . "/{$this->pageData->getType()}_page/templates/{$this->templateName}.tpl.php");
         $html = ob_get_contents();
@@ -27,5 +30,17 @@ abstract class Page implements IContent{
         $this->content = $content;
     }
 
-    protected  abstract function buildPage(PageData $pageData);
+    protected function buildPage(PageData $pageData){
+        $pageContent = array();
+        $modules = $this->moduleLoader->loadModulesFor($pageData->getSection());
+        /**
+         * @var $module Module
+         */
+        foreach($modules as $module){
+            $container = $module->getModulePosition();
+            $pageContent[$container] = $module->getHtml();
+        }
+        $this->setContent($pageContent);
+        return $this;
+    }
 }

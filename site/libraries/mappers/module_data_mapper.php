@@ -26,7 +26,6 @@ class ModuleDataMapper{
     }
 
     private function map($result){
-//        var_dump($result);
         $moduleData = new ModuleData();
         $moduleData->setType($result->type);
         $moduleData->setPosition($result->position);
