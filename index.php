@@ -28,6 +28,8 @@ if(in_array($requestPage, $sectionLoader->getSectionsTypes())){
     echo $page->getHtml();
 }else{
     echo "<h1>ERROR 404 PAGE NOT FOUND</h1>";
+    header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);
+    exit;
 }
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
