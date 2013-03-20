@@ -78,7 +78,7 @@ class CoreInitialConfigurationTest extends AbstractMigration
 
         $count += $this->execute("INSERT INTO core.modules (id, module_type_id, position) VALUES (3, 3, 'right_column');");
 
-        echo $count . "affected rows";
+        echo $count . " affected rows\n";
 
     }
 
