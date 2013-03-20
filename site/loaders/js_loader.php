@@ -5,7 +5,8 @@ class JsLoader extends Loader
     private $jsFiles;
     public function __construct(){
         $this->jsFiles = array(
-            "admin_page"
+            "admin_page",
+            "page"
         );
     }
 

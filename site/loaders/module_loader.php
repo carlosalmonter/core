@@ -26,18 +26,25 @@ class ModuleLoader
         return $modules;
     }
 
+    public function loadModuleForId($id){
+        /**
+         * @var $moduleData ModuleData
+         */
+        $moduleData = $this->getModuleDataForId($id);
+        return $this->loadModule($moduleData->getType(), $moduleData);
+    }
+
     private function getModulesDataFor($section){
         $moduleDataMapper = new ModuleDataMapper();
         $moduleData = $moduleDataMapper->mapFor($section);
-        $header = new ModuleData();
-        $header->setType(ModuleTypes::HEADER);
-        $header->setPosition("header");
-        $header->setData("header");
-        $footer = new ModuleData();
-        $footer->setType(ModuleTypes::FOOTER);
-        $footer->setPosition("footer");
-        $footer->setData("footer");
         return $moduleData;
+    }
+
+    private function getModuleDataForId($id)
+    {
+        $moduleDataMapper = new ModuleDataMapper();
+        $moduleData = $moduleDataMapper->mapForId($id);
+        return $moduleData[0];
     }
 }
 

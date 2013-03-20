@@ -7,7 +7,8 @@ body#admin{
 	margin: 0;
 }
 
-#admin #twoColumnsPage{
+#admin #twoColumnsPage,
+#admin #content{
     width: 900px;
     margin: auto;
 }
