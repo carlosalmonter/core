@@ -6,4 +6,5 @@ run composer update --dev
 run ./vendor/bin/phinx init
 configure phinx.yml config file
 create db named core
+install ruby gem rake
 run rake

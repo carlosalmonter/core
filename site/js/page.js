@@ -1,10 +1,13 @@
-$(document).ready(function(){
-    function loadModuleForId(moduleId, element){
+var CORE = {};
+CORE.ACTIONS = {};
+
+(function(w){
+    CORE.ACTIONS.loadModuleForId = function (moduleId, element){
         $.ajax({
             type: "POST",
             url: "/core/site/ajax/modules/load_module.php",
             data: {
-                moduleId: "3"
+                moduleId: moduleId
             },
             success:(function( data ) {
                 var decodedData = $.parseJSON(data);
@@ -12,9 +15,9 @@ $(document).ready(function(){
             })
         });
     }
+})(window);
 
-    $("#admin_menu .page").click(function(){
-        loadModuleForId("3", $("#rightColumn"));
-    });
+$(document).ready(function(){
+
 
 });
