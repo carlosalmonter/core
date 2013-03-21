@@ -23,8 +23,8 @@
                 <tr>
                     <td class="align-center"><?php echo $data->id?></td>
                     <td><?php echo $data->name?></td>
-                    <td><?php echo $data->author?></td>
-                    <td><?php echo $data->section?></td>
+                    <td>Carlos</td>
+                    <td><?php echo $data->sectionType?></td>
                     <td><?php echo $data->pageType?></td>
                     <td>
                         <a href="#" class="table-icon edit" title="Edit"></a>

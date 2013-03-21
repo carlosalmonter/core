@@ -1,19 +1,20 @@
 <?php
 require_once dirname(__FILE__) . "/../module.php";
 class AdminPagesList extends Module{
-    public function __construct(ModuleData $moduleData){
+    private $database;
+    public function __construct(ModuleData $moduleData, Database $database = null){
+        $this->database = is_null($database)? new Database(): $database;
         $moduleData->setData($this->getPageListData());
         parent::__construct($moduleData);
     }
 
     private function getPageListData()
     {
-        $data = new stdClass();
-        $data->id = "1";
-        $data->name = "Admin Page";
-        $data->author = "Admin";
-        $data->section = "admin";
-        $data->pageType = "two_columns_page";
-        return json_encode(array($data));
+        $results = $this->database->execute("
+                            SELECT s.id, p.name, st.type as sectionType, pt.type as pageType FROM core.sections_types st
+                            JOIN core.sections s ON s.section_type_id = st.id
+                            JOIN core.pages p ON p.section_id = s.id
+                            JOIN core.pages_types pt ON p.page_type_id = pt.id;");
+        return json_encode($results);
     }
 }

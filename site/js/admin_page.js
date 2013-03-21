@@ -13,6 +13,9 @@ CORE.ADMIN = {};
         adminMenu.find(".page").click(function(){
             CORE.ACTIONS.loadModuleForId("3", $("#rightColumn"));
         });
+        adminMenu.find(".add_page").click(function(){
+            CORE.ACTIONS.loadModuleForId("4", $("#rightColumn"));
+        });
     }
 
     CORE.ADMIN.init = function(){
