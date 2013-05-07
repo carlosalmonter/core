@@ -10,6 +10,11 @@ class ModuleLoader
         $this->loader = is_null($loader)? new Loader(): $loader;
     }
 
+
+    public function load($module){
+        return $this->loader->load($type , "module", $type."/",$moduleData);
+    }
+
     private function loadModule($type, ModuleData $moduleData){
         return $this->loader->load($type , "module", $type."/",$moduleData);
     }

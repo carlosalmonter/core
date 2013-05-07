@@ -24,7 +24,7 @@ if(in_array($requestPage, $sectionLoader->getSectionsTypes())){
     /**
      * @var $page Page
      */
-    $page = $pageLoader->loadPageFor($requestPage);
+    $page = $pageLoader->load($requestPage);
     echo $page->getHtml();
 }else{
     echo "<h1>ERROR 404 PAGE NOT FOUND</h1>";
