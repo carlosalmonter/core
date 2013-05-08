@@ -4,10 +4,12 @@ require_once dirname(__FILE__) . "/site/libraries/helpers/array_helper.php";
 require_once dirname(__FILE__) . "/site/libraries/helpers/class_helper.php";
 require_once dirname(__FILE__) . "/site/loaders/css_loader.php";
 require_once dirname(__FILE__) . "/site/loaders/js_loader.php";
-require_once dirname(__FILE__) . "/site/loaders/section_loader.php";
-require_once dirname(__FILE__) . "/site/loaders/page_loader.php";
 require_once dirname(__FILE__) . "/site/loaders/module_loader.php";
-require_once dirname(__FILE__) . "/site/content/pages/page_data.php";
+require_once dirname(__FILE__) . "/site/content/modules/module_types.php";
+require_once dirname(__FILE__) . "/site/loaders/page_loader.php";
+require_once dirname(__FILE__) . "/site/content/pages/sections.php";
+require_once dirname(__FILE__) . "/site/content/pages/page_types/page_types.php";
+
 ?>
 <head>
     <?php
@@ -18,8 +20,7 @@ require_once dirname(__FILE__) . "/site/content/pages/page_data.php";
 <?php
 $pageUrlParams = explode( "/", $_SERVER["REQUEST_URI"]);
 $requestPage = strtolower($pageUrlParams[2]);
-$sectionLoader = new SectionLoader();
-if(in_array($requestPage, $sectionLoader->getSectionsTypes())){
+if(in_array($requestPage, Sections::getSections())){
     $pageLoader = new PageLoader();
     /**
      * @var $page Page

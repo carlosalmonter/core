@@ -2,8 +2,8 @@
 require_once dirname(__FILE__) . "/../../page.php";
 
 abstract class TwoColumnsPage extends Page{
-    public function __construct(){
-        parent::__construct(PageTypes::TWOCOLUMNS, "generic");
+    public function __construct($section){
+        parent::__construct($section, PageTypes::TWOCOLUMNS, "generic");
         $this->buildPage();
     }
 
